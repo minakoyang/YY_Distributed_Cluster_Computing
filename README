@@ -1,0 +1,33 @@
+CPSC6770 Assignment 1: Monte Carlo Estimation of Pi using Parallel Computing
+
+Yuzhe Yang
+
+I implemented two different methods to parallelize the Monte Carlo Pi estimation task: 1) Reduce method (as required by the assignment); 2) Send/Recv method (extra practice). Both methods distributed samples to multiple processes evenly and resulted in similar performance.
+
+I requested 16 mpiprocs on the Palmetto in an interactive mode with:
+qsub -I -l select=2:ncpus=8:mpiprocs=8:interconnect=mx,walltime=01:00:00 
+loaded modules: module add gcc/5.3.0 openmpi/1.8.1  (my codes can be compiled by gcc/4.8.1 as well)
+compiled code with mpicc
+executed codes with mpirun -np xx(number of mpiprocs) ./a.out xxxx(number of samples)
+
+Folder "Monte_Carlo_Pi_Parallel_Reduce_Method" contains:
+
+	1) C code "Monte_Carlo_Pi_Parallel_Reduce_YuzheY.c"
+	2) Table "Monte_Carlo_Pi_Parallel_Reduce_Method_table.xlsx" with all runtime summaries under different numbers of processors and samples.
+	3) Screenshot of all printouts of different condition executions of the program:
+		printed partial counts on each process before/after reducing; 
+		printed elapsed time on process 0;
+		printed estimated pi on process 0;
+		printed other relevant values.
+	4) Plot summary of runtime under different numbers of mpiprocs with 10,000,000 samples in “Reduce_plot_table_summary.pdf”.
+
+
+Folder "Monte_Carlo_Pi_Parallel_Reduce_Method" contains:
+	1) C code "Monte_Carlo_Pi_Parallel_Send_Recv.c".
+	2) Table "Monte_Carlo_Pi_Parallel_Send_Recv_Method_table.xlsx" with all runtime summaries under different number of processors and samples.
+	3) Screenshot of all printouts of different condition executions of the program:
+		printed partial counts on each process;
+		printed elapsed time on process 0;
+		printed estimated pi on process 0;
+		printed other relevant values.
+	4) Plot summary of runtime under different numbers of mpiprocs with 10,000,000 samples in “Send_Recv_plot_table_summary.pdf”.
