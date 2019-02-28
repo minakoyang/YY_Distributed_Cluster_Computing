@@ -4,5 +4,5 @@ Course Projects
 
 1: Monte Carlo Estimation of Pi using Parallel Computing
 
-2: Heat Distribution Stimulation using Sequential and Parallel Computing
+2: Heat Distribution Simulation using Sequential and Parallel Computing
 
